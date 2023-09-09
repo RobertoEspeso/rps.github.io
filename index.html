@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Página de Piedra papel o tijeras con html5 - css3 - javascript"
+    />
+    <meta name="robots" content="index,follow" />
+    <title>Rock, Paper & Scissors</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <img src="src/Logo.png" alt="Logo" />
+    </header>
+    <main>
+      <section>
+        <div class="battle">
+          <div class="computer">
+            <h3>Computer</h3>
+            <img
+              src="/src/paper-battle.png"
+              alt="Choice from computer"
+              id="cpuImage"
+            />
+          </div>
+          <div>
+            <h2>VS</h2>
+          </div>
+          <div>
+            <img
+              src="/src/paper-battle.png"
+              alt="Choice from user"
+              id="userImage"
+            />
+            <h3>You</h3>
+          </div>
+        </div>
+        <p class="choice">
+          <button
+            class="buttons btnRock"
+            onclick="timerChangeImages()"
+            id="btnRock"
+          >
+            <img src="src/rock-choice.png" alt="Rock" />
+            <p>Rock</p>
+          </button>
+          <button
+            class="buttons btnPaper"
+            onclick="timerChangeImages()"
+            id="btnPaper"
+          >
+            <img src="src/paper-choice.png" alt="Paper" />
+            <p>Paper</p>
+          </button>
+          <button
+            class="buttons btnScissors"
+            onclick="timerChangeImages()"
+            id="btnScissors"
+          >
+            <img src="src/scissors-choice.png" alt="Scissors" />
+            <p>Scissors</p>
+          </button>
+        </p>
+        <div class="record">
+          <div>
+            <p>Battles</p>
+          </div>
+          <div>
+            <div>
+              <div>
+                <p>You</p>
+              </div>
+              <div>
+                <p>Loser</p>
+                <img src="src/paper-choice.png" alt="" />
+              </div>
+            </div>
+            <div>
+              <div>
+                <p>Computer</p>
+              </div>
+              <div>
+                <p>Winner</p>
+                <img src="src/rock-choice.png" alt="" />
+              </div>
+            </div>
+          </div>
+          <div>
+            <p>2</p>
+            <p>-</p>
+            <p>4</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>By - <strong>Roberto Espeso</strong></p>
+    </footer>
+    <script src="js/script.js"></script>
+  </body>
+</html>
