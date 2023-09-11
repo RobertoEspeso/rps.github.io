@@ -3,26 +3,60 @@
   padding: 0px;
   box-sizing: border-box;
 }
+:root {
+  --enabled-bg-color: #85c2ff;
+  --enabled-text-color: #1e1e1e;
+  --disabled-bg-color: #5080b0;
+  --disabled-text-color: #ffffff;
+  --second-color: #d9d9d9;
+  --bg-color: #272525;
+  --loser-bg-color: #b43232;
+  --winner-bg-color: #62b84c;
+}
 html {
   font-size: 62.5%;
+}
+body {
+  height: 100vh;
+  background-color: var(--bg-color);
 }
 
 header,
 footer,
 .main,
-.title-battles {
+.title-battles,
+.versus {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+header {
+  height: 2rem;
+  background-color: var(--disabled-bg-color);
+}
+
+.logo {
+  height: 2rem;
+}
+
+.battle,
+.title-battles,
+footer {
+  background-color: var(--disabled-bg-color);
+}
 
 .computer,
 .you {
+  height: 11rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+.computer img,
+.you img {
+  max-width: 10rem;
+}
 .record {
   display: flex;
   flex-direction: column;
@@ -33,6 +67,24 @@ footer,
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.counter-results {
+  background-color: var(--disabled-bg-color);
+  color: var(--disabled-text-color);
+}
+.text-record {
+  max-height: 7rem;
+  overflow: scroll;
+}
+.text-record::-webkit-scrollbar {
+  display: none;
+}
+
+.container-user-results,
+.container-cpu-results {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .player-results,
@@ -53,6 +105,8 @@ img.icon-results {
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  background-color: var(--second-color);
+  color: var(--enabled-text-color);
 }
 .btnRock,
 .btnPaper,
@@ -71,4 +125,11 @@ button:disabled {
 button.btnChosenUser {
   background-color: #85c2ff;
   color: #1e1e1e;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
 }

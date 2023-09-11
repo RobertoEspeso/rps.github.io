@@ -14,7 +14,7 @@
   </head>
   <body>
     <header>
-      <img src="src/Logo.png" alt="Logo" />
+      <img class="logo" src="src/Logo.png" alt="Logo" />
     </header>
     <main class="main">
       <section>
@@ -27,7 +27,7 @@
               id="cpuImage"
             />
           </div>
-          <div>
+          <div class="versus">
             <h2>VS</h2>
           </div>
           <div class="you">
@@ -75,20 +75,14 @@
               <p>Computer</p>
             </div>
             <div class="text-record">
-              <div class="player-results" id="userResults">
-                <p>Loser</p>
-                <img class="icon-results" src="src/paper-choice.png" alt="" />
-              </div>
-              <div class="cpu-results" id="cpuResults">
-                <p>Winner</p>
-                <img class="icon-results" src="src/rock-choice.png" alt="" />
-              </div>
+              <div id="userResults" class="container-user-results"></div>
+              <div id="cpuResults" class="container-cpu-results"></div>
             </div>
           </div>
           <div class="counter-results">
-            <p id="textWinsUSer">0</p>
+            <p id="textAllWinsUser">0</p>
             <p>-</p>
-            <p id="textWinsCpu">0</p>
+            <p id="textAllWinsCpu">0</p>
           </div>
         </div>
       </section>
