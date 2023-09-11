@@ -16,7 +16,7 @@
     <header>
       <img src="src/Logo.png" alt="Logo" />
     </header>
-    <main>
+    <main class="main">
       <section>
         <div class="battle">
           <div class="computer">
@@ -30,7 +30,7 @@
           <div>
             <h2>VS</h2>
           </div>
-          <div>
+          <div class="you">
             <img
               src="/src/paper-battle.png"
               alt="Choice from user"
@@ -66,33 +66,29 @@
           </button>
         </p>
         <div class="record">
-          <div>
+          <div class="title-battles">
             <p>Battles</p>
           </div>
           <div>
-            <div>
-              <div>
-                <p>You</p>
-              </div>
-              <div>
-                <p>Loser</p>
-                <img src="src/paper-choice.png" alt="" />
-              </div>
+            <div class="tittles-record">
+              <p>You</p>
+              <p>Computer</p>
             </div>
-            <div>
-              <div>
-                <p>Computer</p>
+            <div class="text-record">
+              <div class="player-results" id="userResults">
+                <p>Loser</p>
+                <img class="icon-results" src="src/paper-choice.png" alt="" />
               </div>
-              <div>
+              <div class="cpu-results" id="cpuResults">
                 <p>Winner</p>
-                <img src="src/rock-choice.png" alt="" />
+                <img class="icon-results" src="src/rock-choice.png" alt="" />
               </div>
             </div>
           </div>
-          <div>
-            <p>2</p>
+          <div class="counter-results">
+            <p id="textWinsUSer">0</p>
             <p>-</p>
-            <p>4</p>
+            <p id="textWinsCpu">0</p>
           </div>
         </div>
       </section>

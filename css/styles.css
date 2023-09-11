@@ -3,7 +3,57 @@
   padding: 0px;
   box-sizing: border-box;
 }
+html {
+  font-size: 62.5%;
+}
 
+header,
+footer,
+.main,
+.title-battles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.computer,
+.you {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.record {
+  display: flex;
+  flex-direction: column;
+}
+.text-record,
+.counter-results {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.player-results,
+.cpu-results {
+  display: flex;
+  align-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+img.icon-results {
+  width: 3rem;
+  height: 3rem;
+}
+
+.tittles-record {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
 .btnRock,
 .btnPaper,
 .btnScissors {
