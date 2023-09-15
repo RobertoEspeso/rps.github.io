@@ -20,6 +20,8 @@ const cpuResults = document.getElementById("cpuResults");
 let userImage = document.getElementById("userImage");
 let textAllWinsUser = document.getElementById("textAllWinsUser");
 let textAllWinsCpu = document.getElementById("textAllWinsCpu");
+let you = document.getElementById("you");
+let computer = document.getElementById("computer");
 
 let btnSelected;
 let userValue;
@@ -94,6 +96,7 @@ function ppt() {
     //console.log(`Este es el valor del cpu ${images[cpuValue]}`);
     //console.log(cpuValue);
     battle();
+
     enableBtns();
     removeBtnSelected();
   }
@@ -168,10 +171,21 @@ function battle() {
 }
 
 function writeResults() {
+  let classUserResults = textUserResults[0].toLowerCase();
+  let classCpuResults = textCpuResults[0].toLowerCase();
   textAllWinsUser.innerText = allWinsUser;
   textAllWinsCpu.innerText = allWinsCpu;
-  userResults.innerHTML += `<div class="player-results"> <p>${textUserResults}</p>
+  you.classList.remove("winner", "loser", "tie");
+  computer.classList.remove("winner", "loser", "tie");
+  you.classList.add(classUserResults);
+  computer.classList.add(classCpuResults);
+  userResults.innerHTML += `<div class="player-results ${classUserResults}"> <p>${textUserResults}</p>
   <img class="icon-results" src="${iconUserResults}" alt="" /></div>`;
-  cpuResults.innerHTML += `<div class="cpu-results"> <p>${textCpuResults}</p>
+  cpuResults.innerHTML += `<div class="cpu-results ${classCpuResults}"> <p>${textCpuResults}</p>
   <img class="icon-results" src="${iconCpuResults}" alt="" /></div>`;
+}
+
+function cleanClasses() {
+  you.classList.remove(classUserResults);
+  computer.classList.remove(classCpuResults);
 }

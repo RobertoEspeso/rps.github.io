@@ -29,12 +29,28 @@ h2 {
 
 h3 {
   font-size: 3.5rem;
+  color: var(--disabled-text-color);
+}
+h4 {
+  font-size: 2rem;
 }
 
 p {
   font-size: 1.5rem;
 }
 
+.loser {
+  color: var(--second-color);
+  background-color: var(--loser-bg-color);
+}
+.winner {
+  color: var(--second-color);
+  background-color: var(--winner-bg-color);
+}
+.tie {
+  color: var(--enabled-text-color);
+  background-color: var(--disabled-text-color);
+}
 header,
 footer,
 .main,
@@ -76,6 +92,9 @@ footer {
   height: 2rem;
   background-color: var(--disabled-text-color);
 }
+.title-battles h4 {
+  color: var(--second-color);
+}
 
 .battle {
   display: flex;
@@ -99,6 +118,13 @@ footer {
   max-width: 10rem;
 }
 
+.computer {
+  border-radius: 2rem 2rem 0 0;
+}
+.you {
+  border-radius: 0 0 2rem 2rem;
+}
+
 .choice {
   display: flex;
   align-items: center;
@@ -106,9 +132,6 @@ footer {
   height: 17rem;
 }
 
-.buttons p {
-  font-size: 1.5rem;
-}
 .record {
   display: flex;
   flex-direction: column;
@@ -117,18 +140,19 @@ footer {
 .counter-results {
   display: flex;
   justify-content: space-around;
-  align-items: center;
   flex-wrap: wrap;
 }
 
 .counter-results {
   background-color: var(--disabled-bg-color);
   color: var(--disabled-text-color);
+  align-items: center;
 }
 .text-record {
   height: 10rem;
   overflow: scroll;
   background-color: var(--second-color);
+  align-items: baseline;
 }
 .text-record::-webkit-scrollbar {
   display: none;
@@ -146,6 +170,7 @@ footer {
   align-content: center;
   justify-content: space-evenly;
   align-items: center;
+  width: 15rem;
   gap: 1rem;
 }
 
@@ -166,6 +191,7 @@ img.icon-results {
 .btnPaper,
 .btnScissors {
   font-family: "Roboto", sans-serif;
+  font-weight: bold;
   padding: 0.5rem;
   width: 9rem;
   cursor: pointer;
