@@ -40,11 +40,11 @@ p {
 }
 
 .loser {
-  color: var(--second-color);
+  color: var(--disabled-text-color);
   background-color: var(--loser-bg-color);
 }
 .winner {
-  color: var(--second-color);
+  color: var(--disabled-text-color);
   background-color: var(--winner-bg-color);
 }
 .tie {
@@ -195,10 +195,19 @@ img.icon-results {
   padding: 0.5rem;
   width: 9rem;
   cursor: pointer;
-  background-color: #5080b0;
+  background-color: var(--disabled-bg-color);
   color: #ffffff;
   border: 0;
   border-radius: 1.2rem;
+  box-shadow: -4px 5px 0px 0px rgb(255, 255, 255, 0.75);
+  -webkit-box-shadow: -4px 5px 0px 0px rgb(255, 255, 255, 0.75);
+  -moz-box-shadow: -4px 5px 0px 0px rgb(255, 255, 255, 0.75);
+}
+button:hover,
+button:hover,
+button:hover {
+  background-color: var(--enabled-bg-color);
+  color: var(--enabled-text-color);
 }
 
 button:disabled {
@@ -207,6 +216,12 @@ button:disabled {
 }
 
 button.btnChosenUser {
+  position: relative;
+  top: 0.6rem;
+  right: 0.4rem;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
   background-color: #85c2ff;
   color: #1e1e1e;
 }
