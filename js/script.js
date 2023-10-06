@@ -20,17 +20,19 @@ const cpuResults = document.getElementById("cpuResults");
 let userImage = document.getElementById("userImage");
 let textAllWinsUser = document.getElementById("textAllWinsUser");
 let textAllWinsCpu = document.getElementById("textAllWinsCpu");
+let containerAllWinsUser = document.getElementById("textAllWinsUser");
+let containerAllWinsCpu = document.getElementById("textAllWinsCpu");
 let you = document.getElementById("you");
 let computer = document.getElementById("computer");
 
 let btnSelected;
 let userValue;
+let cpuValue;
 let lengthImages = images.length;
 let allWinsUser = 0;
 let allWinsCpu = 0;
 let min = 1;
 let max = 3;
-let cpuValue;
 let changeImages;
 let textUserResults = "";
 let textCpuResults = "";
@@ -104,70 +106,33 @@ function ppt() {
 
 function battle() {
   switch (true) {
-    case userValue === 1 && cpuValue === 3:
-      //piedra vs tijera
+    case userValue === 1 && cpuValue === 3: //piedra vs tijera
+    case userValue === 2 && cpuValue === 1: //papel vs piedra
+    case userValue === 3 && cpuValue === 2: // tijera vs papel
       allWinsUser++;
+      animatedNumbers(containerAllWinsUser);
       textUserResults = results[0];
       textCpuResults = results[1];
-      iconUserResults = images[userValue];
-      iconCpuResults = images[cpuValue];
-      writeResults(userValue, cpuValue);
-      break;
-    case userValue === 2 && cpuValue === 1:
-      //papel vs piedra
-      allWinsUser++;
-      textUserResults = results[0];
-      textCpuResults = results[1];
-      iconUserResults = images[userValue];
-      iconCpuResults = images[cpuValue];
-      writeResults(userValue, cpuValue);
-      break;
-    case userValue === 3 && cpuValue === 2:
-      // tijera vs papel
-      allWinsUser++;
-      textUserResults = results[0];
-      textCpuResults = results[1];
-      iconUserResults = images[userValue];
-      iconCpuResults = images[cpuValue];
-      writeResults(userValue, cpuValue);
       break;
 
-    case cpuValue === 1 && userValue === 3:
-      //piedra vs tijera
+    case cpuValue === 1 && userValue === 3: //piedra vs tijera
+    case cpuValue === 2 && userValue === 1: //papel vs piedra
+    case cpuValue === 3 && userValue === 2: // tijera vs papel
       allWinsCpu++;
+      animatedNumbers(containerAllWinsCpu);
       textUserResults = results[1];
       textCpuResults = results[0];
-      iconUserResults = images[userValue];
-      iconCpuResults = images[cpuValue];
-      writeResults(userValue, cpuValue);
       break;
-    case cpuValue === 2 && userValue === 1:
-      //papel vs piedra
-      allWinsCpu++;
-      textUserResults = results[1];
-      textCpuResults = results[0];
-      iconUserResults = images[userValue];
-      iconCpuResults = images[cpuValue];
-      writeResults(userValue, cpuValue);
-      break;
-    case cpuValue === 3 && userValue === 2:
-      // tijera vs papel
-      allWinsCpu++;
-      textUserResults = results[1];
-      textCpuResults = results[0];
-      iconUserResults = images[userValue];
-      iconCpuResults = images[cpuValue];
-      writeResults(userValue, cpuValue);
-      break;
-    case cpuValue === userValue:
+
+    case cpuValue === userValue: // Empataron
       textUserResults = results[2];
       textCpuResults = results[2];
-      iconUserResults = images[userValue];
-      iconCpuResults = images[cpuValue];
-      writeResults(userValue, cpuValue);
-      // Empataron
+      animatedNumbersTie(containerAllWinsCpu, containerAllWinsUser);
       break;
   }
+  iconUserResults = images[userValue];
+  iconCpuResults = images[cpuValue];
+  writeResults(userValue, cpuValue);
 }
 
 function writeResults() {
@@ -185,7 +150,18 @@ function writeResults() {
   <img class="icon-results" src="${iconCpuResults}" alt="" /></div>`;
 }
 
-function cleanClasses() {
-  you.classList.remove(classUserResults);
-  computer.classList.remove(classCpuResults);
+function animatedNumbers(numberWinnerRound) {
+  numberWinnerRound.classList.add("blur-and-movement");
+  setTimeout(() => {
+    numberWinnerRound.classList.remove("blur-and-movement");
+  }, 500);
+}
+
+function animatedNumbersTie(containerAllWinsCpu, containerAllWinsUser) {
+  containerAllWinsCpu.classList.add("shake-horizontal");
+  containerAllWinsUser.classList.add("shake-horizontal");
+  setTimeout(() => {
+    containerAllWinsCpu.classList.remove("shake-horizontal");
+    containerAllWinsUser.classList.remove("shake-horizontal");
+  }, 500);
 }
