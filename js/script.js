@@ -6,8 +6,13 @@ var images = new Array(
   ["src/paper-battle.png"],
   ["src/scissors-battle.png"]
 );
-
-var results = new Array(["Winner"], ["Loser"], ["Tie"]);
+//Tabla de verdad con los valores del CPU (fila) y del USuario(columna) siendo asi matris[cpu].[usuario] y esto devuelve un resultado, por ejemplo matris.[1].[1] devuelve empata porque seria matris.[piedra].[piedra] y estos al ser iguales, sería un empate.
+var tablePPT = [
+  ["", "Rock", "Paper", "Siccsor"],
+  ["Rock", "tie", "winner", "loser"],
+  ["Paper", "winner", "tie", "loser"],
+  ["Siccsor", "loser", "winner", "tie"],
+];
 
 let index = 0;
 let image = document.getElementById("cpuImage");
@@ -34,8 +39,8 @@ let allWinsCpu = 0;
 let min = 1;
 let max = 3;
 let changeImages;
-let textUserResults = "";
-let textCpuResults = "";
+let textUserResults;
+let textCpuResults;
 let iconUserResults;
 let iconCpuResults;
 
@@ -97,56 +102,52 @@ function ppt() {
     image.src = images[cpuValue];
     //console.log(`Este es el valor del cpu ${images[cpuValue]}`);
     //console.log(cpuValue);
-    battle();
+    resultTablePPT = tablePPT[cpuValue][userValue];
+    battle(resultTablePPT);
 
     enableBtns();
     removeBtnSelected();
   }
 }
 
-function battle() {
-  switch (true) {
-    case userValue === 1 && cpuValue === 3: //piedra vs tijera
-    case userValue === 2 && cpuValue === 1: //papel vs piedra
-    case userValue === 3 && cpuValue === 2: // tijera vs papel
+function battle(resultTablePPT) {
+  switch (resultTablePPT) {
+    case "winner":
       allWinsUser++;
       animatedNumbers(containerAllWinsUser);
-      textUserResults = results[0];
-      textCpuResults = results[1];
+      textUserResults = tablePPT[1][2];
+      textCpuResults = tablePPT[1][3];
+      writeResults(userValue, cpuValue);
       break;
-
-    case cpuValue === 1 && userValue === 3: //piedra vs tijera
-    case cpuValue === 2 && userValue === 1: //papel vs piedra
-    case cpuValue === 3 && userValue === 2: // tijera vs papel
+    case "loser":
       allWinsCpu++;
       animatedNumbers(containerAllWinsCpu);
-      textUserResults = results[1];
-      textCpuResults = results[0];
+      textUserResults = tablePPT[1][3];
+      textCpuResults = tablePPT[1][2];
+      writeResults(userValue, cpuValue);
       break;
-
-    case cpuValue === userValue: // Empataron
-      textUserResults = results[2];
-      textCpuResults = results[2];
+    case "tie":
       animatedNumbersTie(containerAllWinsCpu, containerAllWinsUser);
+      textUserResults = tablePPT[1][1];
+      textCpuResults = tablePPT[1][1];
+      writeResults(userValue, cpuValue);
+
       break;
   }
-  iconUserResults = images[userValue];
-  iconCpuResults = images[cpuValue];
-  writeResults(userValue, cpuValue);
 }
 
 function writeResults() {
-  let classUserResults = textUserResults[0].toLowerCase();
-  let classCpuResults = textCpuResults[0].toLowerCase();
+  iconUserResults = images[userValue];
+  iconCpuResults = images[cpuValue];
   textAllWinsUser.innerText = allWinsUser;
   textAllWinsCpu.innerText = allWinsCpu;
   you.classList.remove("winner", "loser", "tie");
   computer.classList.remove("winner", "loser", "tie");
-  you.classList.add(classUserResults);
-  computer.classList.add(classCpuResults);
-  userResults.innerHTML += `<div class="player-results ${classUserResults}"> <p>${textUserResults}</p>
+  you.classList.add(`${textUserResults}`);
+  computer.classList.add(`${textCpuResults}`);
+  userResults.innerHTML += `<div class="player-results ${textUserResults}"> <p>${textUserResults}</p>
   <img class="icon-results" src="${iconUserResults}" alt="" /></div>`;
-  cpuResults.innerHTML += `<div class="cpu-results ${classCpuResults}"> <p>${textCpuResults}</p>
+  cpuResults.innerHTML += `<div class="cpu-results ${textCpuResults}"> <p>${textCpuResults}</p>
   <img class="icon-results" src="${iconCpuResults}" alt="" /></div>`;
 }
 
