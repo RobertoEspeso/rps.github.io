@@ -19,7 +19,7 @@ let image = document.getElementById("cpuImage");
 const btnRock = document.getElementById("btnRock");
 const btnPaper = document.getElementById("btnPaper");
 const btnScissors = document.getElementById("btnScissors");
-const btns = document.querySelectorAll(".buttons");
+const btns = document.querySelectorAll(".choice__buttons");
 const userResults = document.getElementById("userResults");
 const cpuResults = document.getElementById("cpuResults");
 let userImage = document.getElementById("userImage");
@@ -28,7 +28,7 @@ let textAllWinsCpu = document.getElementById("textAllWinsCpu");
 let containerAllWinsUser = document.getElementById("textAllWinsUser");
 let containerAllWinsCpu = document.getElementById("textAllWinsCpu");
 let you = document.getElementById("you");
-let computer = document.getElementById("computer");
+let cpu = document.getElementById("cpu");
 
 let btnSelected;
 let userValue;
@@ -142,13 +142,13 @@ function writeResults() {
   textAllWinsUser.innerText = allWinsUser;
   textAllWinsCpu.innerText = allWinsCpu;
   you.classList.remove("winner", "loser", "tie");
-  computer.classList.remove("winner", "loser", "tie");
+  cpu.classList.remove("winner", "loser", "tie");
   you.classList.add(`${textUserResults}`);
-  computer.classList.add(`${textCpuResults}`);
-  userResults.innerHTML += `<div class="player-results ${textUserResults}"> <p>${textUserResults}</p>
-  <img class="icon-results" src="${iconUserResults}" alt="" /></div>`;
-  cpuResults.innerHTML += `<div class="cpu-results ${textCpuResults}"> <p>${textCpuResults}</p>
-  <img class="icon-results" src="${iconCpuResults}" alt="" /></div>`;
+  cpu.classList.add(`${textCpuResults}`);
+  userResults.innerHTML += `<div class="results ${textUserResults}"> <p class="results__text">${textUserResults}</p>
+  <img class="results__icon" src="${iconUserResults}" alt="" /></div>`;
+  cpuResults.innerHTML += `<div class="results ${textCpuResults}"> <p class="results__text">${textCpuResults}</p>
+  <img class="results__icon" src="${iconCpuResults}" alt="" /></div>`;
 }
 
 function animatedNumbers(numberWinnerRound) {

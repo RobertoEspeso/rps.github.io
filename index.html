@@ -20,81 +20,81 @@
   </head>
   <body>
     <header>
-      <img class="logo" src="src/Logo.png" alt="Logo" />
+      <img class="header__logo" src="src/Logo.png" alt="Logo" />
     </header>
     <main class="main">
       <section class="initial-container">
         <div class="battle">
-          <div class="computer" id="computer">
-            <h2>Computer</h2>
+          <div id="cpu" class="battle-container battle-container--cpu">
+            <h2 class="battle__title">Computer</h2>
             <img
-              src="src/paper-battle.png"
-              alt="Choice from computer"
               id="cpuImage"
+              class="battle__img"
+              src="src/paper-battle.png"
+              alt="Choice from cpu"
             />
           </div>
-          <div class="versus">
-            <h3>VS</h3>
+          <div class="battle__versus">
+            <h3 class="battle__sub-title">VS</h3>
           </div>
-          <div class="you" id="you">
+          <div id="you" class="battle-container battle-container--you">
             <img
+              id="userImage"
+              class="battle__img"
               src="src/paper-battle.png"
               alt="Choice from user"
-              id="userImage"
             />
-            <h2>You</h2>
+            <h2 class="battle__title">You</h2>
           </div>
         </div>
         <p class="choice">
           <button
-            class="buttons btnRock"
-            onclick="timerChangeImages()"
             id="btnRock"
+            class="choice__buttons choice__buttons--btnRock"
+            onclick="timerChangeImages()"
           >
             <img src="src/rock-choice.png" alt="Rock" />
-            <p>Rock</p>
+            <p class="choice__text">Rock</p>
           </button>
           <button
-            class="buttons btnPaper"
-            onclick="timerChangeImages()"
             id="btnPaper"
+            class="choice__buttons choice__buttons--btnPaper"
+            onclick="timerChangeImages()"
           >
             <img src="src/paper-choice.png" alt="Paper" />
-            <p>Paper</p>
+            <p class="choice__text">Paper</p>
           </button>
           <button
-            class="buttons btnScissors"
-            onclick="timerChangeImages()"
             id="btnScissors"
+            class="choice__buttons choice__buttons--btnScissors"
+            onclick="timerChangeImages()"
           >
             <img src="src/scissors-choice.png" alt="Scissors" />
-            <p>Scissors</p>
+            <p class="choice__text">Scissors</p>
           </button>
         </p>
         <div class="record">
-          <div class="title-battles">
-            <h4>Battles</h4>
+          <div class="record-container">
+            <h4 class="record__sub-title">Battles</h4>
           </div>
           <div class="counter-results">
-            <h4 id="textAllWinsUser" class="">0</h4>
-            <h4>-</h4>
-            <h4 id="textAllWinsCpu" class="">0</h4>
+            <h4 id="textAllWinsUser" class="counter-results__text">0</h4>
+            <h4 class="counter-results__text">-</h4>
+            <h4 id="textAllWinsCpu" class="counter-results__text">0</h4>
           </div>
-          <div>
-            <div class="tittles-record">
-              <p>You</p>
-              <p>Computer</p>
-            </div>
-            <div class="text-record">
-              <div id="userResults" class="container-user-results"></div>
-              <div id="cpuResults" class="container-cpu-results"></div>
-            </div>
+          <div class="record-titles">
+            <p class="record-titles__text">You</p>
+            <p class="record-titles__text">Computer</p>
+          </div>
+          <div class="record-results">
+            <div id="userResults" class="container-results"></div>
+            <div id="cpuResults" class="container-results"></div>
           </div>
         </div>
       </section>
     </main>
     <footer>
-      <p>By - <strong>Roberto Espeso</strong></p>
+      <p class="footer__text">By - <strong>Roberto Espeso</strong></p>
     </footer>
     <script src="js/script.js"></script>
   </body>
