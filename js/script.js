@@ -29,6 +29,10 @@ let containerAllWinsUser = document.getElementById("textAllWinsUser");
 let containerAllWinsCpu = document.getElementById("textAllWinsCpu");
 let you = document.getElementById("you");
 let cpu = document.getElementById("cpu");
+let popup = document.getElementById("popup");
+let popupBody = document.getElementById("popupBody");
+let popupFooter = document.getElementById("popupFooter");
+let btnClosePopup = document.getElementById("btnClosePopup");
 
 let btnSelected;
 let userValue;
@@ -43,10 +47,14 @@ let textUserResults;
 let textCpuResults;
 let iconUserResults;
 let iconCpuResults;
+let wins = false;
+let popupTitle = "";
+let popupParagraphResults = "";
+let btnRestart = `<button class="popup__buttons" type="submit" onclick="restartGame()">Restart</button>`;
+let btnContinue = `<button class="popup__buttons" type="submit" onclick="closePopup()">Continue</button>`;
+let lastBtnClosePopup = `<a id="btnClosePopup" onclick="closePopup()" class="popup__close">X</a>`;
 
 const btnClicked = function (e) {
-  // console.log(`El texto que tiene el boton clickeado es: ${this.innerText}`);
-  // console.log(`El contenido html que tiene el boton clickeado es: ${this.innerHTML}`);
   let userTextSelection = this.innerHTML;
   if (userTextSelection.includes("Rock")) {
     userImage.attributes.src.value = images[1];
@@ -60,7 +68,6 @@ const btnClicked = function (e) {
   }
   this.classList.add("btnChosenUser");
   btnSelected = this.classList;
-  //console.log(btnSelected);
   return userValue;
 };
 
@@ -93,15 +100,11 @@ function timerChangeImages() {
 function ppt() {
   if (index < lengthImages) {
     image.src = images[index];
-    //    console.log(images[index]);
-    //    console.log(index);
     index++;
   } else {
     clearInterval(changeImages);
     cpuValue = Math.floor(Math.random() * (max - min + 1) + min);
     image.src = images[cpuValue];
-    //console.log(`Este es el valor del cpu ${images[cpuValue]}`);
-    //console.log(cpuValue);
     resultTablePPT = tablePPT[cpuValue][userValue];
     battle(resultTablePPT);
 
@@ -149,13 +152,14 @@ function writeResults() {
   <img class="results__icon" src="${iconUserResults}" alt="" /></div>`;
   cpuResults.innerHTML += `<div class="results ${textCpuResults}"> <p class="results__text">${textCpuResults}</p>
   <img class="results__icon" src="${iconCpuResults}" alt="" /></div>`;
+  popupExportResults();
 }
 
 function animatedNumbers(numberWinnerRound) {
   numberWinnerRound.classList.add("blur-and-movement");
   setTimeout(() => {
     numberWinnerRound.classList.remove("blur-and-movement");
-  }, 500);
+  }, 550);
 }
 
 function animatedNumbersTie(containerAllWinsCpu, containerAllWinsUser) {
@@ -165,4 +169,176 @@ function animatedNumbersTie(containerAllWinsCpu, containerAllWinsUser) {
     containerAllWinsCpu.classList.remove("shake-horizontal");
     containerAllWinsUser.classList.remove("shake-horizontal");
   }, 500);
+}
+
+function popupExportResults() {
+  switch (popupResults()) {
+    case "User win 3":
+      confetiWin3();
+      completePopup("¡Congrats, you are awesome!", "win");
+      break;
+    case "User win 5":
+      confetiWin5();
+      completePopup("¡Wow you got it!", "win");
+      break;
+    case "Cpu win 3":
+      confetiLose();
+      completePopup("¡Oh no :(!", "lose");
+      break;
+    case "Cpu win 5":
+      confetiLose();
+      completePopup("Well...¿who is hungry?", "lose");
+      break;
+  }
+}
+
+function popupResults() {
+  if (allWinsUser == 3 && allWinsCpu < 3 && wins == false) {
+    popupFooter.innerHTML = btnContinue;
+    return "User win 3";
+  }
+  if (allWinsUser == 5 && allWinsCpu < 5 && wins == true) {
+    return "User win 5";
+  }
+  if (allWinsCpu == 3 && allWinsUser < 3 && wins == false) {
+    return "Cpu win 3";
+  }
+  if (allWinsCpu == 5 && allWinsUser < 5 && wins == true) {
+    return "Cpu win 5";
+  }
+}
+
+function completePopup(popupTitle, popupParagraphResults) {
+  wins = !wins;
+  openPopup();
+  popupBody.innerHTML = `<h2 class="popup__title">${popupTitle}</h2>
+  <p class="popup__paragraph">
+    You ${popupParagraphResults} with ${allWinsUser} victories and ${allWinsCpu} defeats</p>`;
+  if (allWinsUser == 5 || allWinsCpu == 5) {
+    popupFooter.innerHTML = btnRestart;
+    btnClosePopup.setAttribute("onclick", "restartGame()");
+  } else {
+    popupFooter.innerHTML = btnRestart + btnContinue;
+  }
+}
+
+function restartGame() {
+  location.reload();
+  enableBtns();
+}
+
+function openPopup() {
+  popup.classList.add("open-popup");
+  setTimeout(() => {
+    disableBtns();
+  }, 500);
+}
+function closePopup() {
+  popup.classList.remove("open-popup");
+  enableBtns();
+}
+
+/*Confeti Winner best of 5 */
+
+function confetiWin3() {
+  let count = 200;
+  let defaults = {
+    origin: { y: 0.7 },
+  };
+
+  function fire(particleRatio, opts) {
+    confetti({
+      ...defaults,
+      ...opts,
+      particleCount: Math.floor(count * particleRatio),
+    });
+  }
+
+  fire(0.25, {
+    spread: 26,
+    startVelocity: 55,
+  });
+  fire(0.2, {
+    spread: 60,
+  });
+  fire(0.35, {
+    spread: 100,
+    decay: 0.91,
+    scalar: 0.8,
+  });
+  fire(0.1, {
+    spread: 120,
+    startVelocity: 25,
+    decay: 0.92,
+    scalar: 1.2,
+  });
+  fire(0.1, {
+    spread: 120,
+    startVelocity: 45,
+  });
+}
+
+/*Confeti winner 5 times */
+
+function confetiWin5() {
+  let duration = 15 * 1000;
+  let animationEnd = Date.now() + duration;
+  let defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+  function randomInRange(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  var interval = setInterval(function () {
+    var timeLeft = animationEnd - Date.now();
+
+    if (timeLeft <= 0) {
+      return clearInterval(interval);
+    }
+
+    var particleCount = 50 * (timeLeft / duration);
+    confetti({
+      ...defaults,
+      particleCount,
+      origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+    });
+    confetti({
+      ...defaults,
+      particleCount,
+      origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+    });
+  }, 250);
+}
+
+/*confeti loser */
+
+function confetiLose() {
+  let scalar = 3;
+  let sad = confetti.shapeFromText({ text: "😢", scalar });
+
+  let defaults = {
+    spread: 500,
+    ticks: 60,
+    gravity: 0,
+    decay: 1,
+    startVelocity: 6,
+    shapes: [sad],
+    scalar,
+  };
+  confetti({
+    ...defaults,
+    particleCount: 30,
+  });
+
+  confetti({
+    ...defaults,
+    particleCount: 5,
+    flat: true,
+  });
+
+  confetti({
+    ...defaults,
+    particleCount: 15,
+    scalar: scalar / 2,
+  });
 }

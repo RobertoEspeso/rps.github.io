@@ -8,7 +8,39 @@
       name="description"
       content="Página de Piedra papel o tijeras con html5 - css3 - javascript"
     />
+    <meta
+      name="keywords"
+      content="javascrips, html5, css, flexbox, rock & papers & sicssors, piedra papel y tijeras, RPS, RobertoEspeso,EspesoRoberto, roberto espeso, espeso roberto, roberto, espeso"
+    />
+    <meta name="author" content="Espeso Roberto" />
+    <meta name="copyright" content="Espeso Roberto 2023" />
+
+    <!--Facebook-->
+    <meta property="og:title" content="Desafio To Do List" />
+    <meta
+      property="og:description"
+      content="Página de Piedra papel o tijeras con html5 - css3 - javascript, buscando aplicar conocimientos de semántica html5, BEM, mobile first, responsive design, anmación en css, utilización de librerias js y js vanilla."
+    />
+    <meta property="og:type" content="Página de Piedra papel o tijeras" />
+    <meta property="og:image" content="http://imgfz.com/i/6oJygXl.jpeg" />
+    <meta
+      property="og:url"
+      content="https://github.com/RobertoEspeso/ToDoSuper.github.io"
+    />
+
+    <!--Twitter-->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@RobertoEspeso" />
+    <meta name="twitter:creator" content="@RobertoEspeso" />
+    <meta name="twitter:title" content="Página de Piedra papel o tijeras" />
+    <meta
+      name="twitter:description"
+      content="Página de Piedra papel o tijeras con html5 - css3 - javascript, buscando aplicar conocimientos de semántica html5, BEM, mobile first, responsive design, anmación en css, utilización de librerias js y js vanilla."
+    />
+    <meta name="twitter:image" content="http://imgfz.com/i/6oJygXl.jpeg" />
     <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#5080b0" />
+    <link rel="icon" href="src/Logo.ico" type="image/x-icon" />
     <title>Rock, Paper & Scissors</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,11 +52,15 @@
   </head>
   <body>
     <header>
-      <img class="header__logo" src="src/Logo.png" alt="Logo" />
+      <nav>
+        <a href="#" onclick="restartGame()">
+          <img class="header__logo" src="src/Logo.png" alt="Logo" />
+        </a>
+      </nav>
     </header>
     <main class="main">
       <section class="initial-container">
-        <div class="battle">
+        <section class="battle">
           <div id="cpu" class="battle-container battle-container--cpu">
             <h2 class="battle__title">Computer</h2>
             <img
@@ -46,14 +82,14 @@
             />
             <h2 class="battle__title">You</h2>
           </div>
-        </div>
-        <p class="choice">
+        </section>
+        <section class="choice">
           <button
             id="btnRock"
             class="choice__buttons choice__buttons--btnRock"
             onclick="timerChangeImages()"
           >
-            <img src="src/rock-choice.png" alt="Rock" />
+            <img class="choice__image" src="src/rock-choice.png" alt="Rock" />
             <p class="choice__text">Rock</p>
           </button>
           <button
@@ -61,7 +97,7 @@
             class="choice__buttons choice__buttons--btnPaper"
             onclick="timerChangeImages()"
           >
-            <img src="src/paper-choice.png" alt="Paper" />
+            <img class="choice__image" src="src/paper-choice.png" alt="Paper" />
             <p class="choice__text">Paper</p>
           </button>
           <button
@@ -69,11 +105,15 @@
             class="choice__buttons choice__buttons--btnScissors"
             onclick="timerChangeImages()"
           >
-            <img src="src/scissors-choice.png" alt="Scissors" />
+            <img
+              class="choice__image"
+              src="src/scissors-choice.png"
+              alt="Scissors"
+            />
             <p class="choice__text">Scissors</p>
           </button>
-        </p>
-        <div class="record">
+        </section>
+        <section class="record">
           <div class="record-container">
             <h4 class="record__sub-title">Battles</h4>
           </div>
@@ -90,12 +130,26 @@
             <div id="userResults" class="container-results"></div>
             <div id="cpuResults" class="container-results"></div>
           </div>
-        </div>
+        </section>
       </section>
     </main>
+    <dialog class="popup" id="popup">
+      <header class="popup__header">
+        <a id="btnClosePopup" onclick="closePopup()" class="popup__close">X</a>
+      </header>
+      <section class="popup__body" id="popupBody"></section>
+      <footer class="popup__footer" id="popupFooter"></footer>
+    </dialog>
     <footer>
-      <p class="footer__text">By - <strong>Roberto Espeso</strong></p>
+      <p class="footer__text">
+        By -
+        <a class="footer__mail" href="mailto:roberto.espeso96@gmail.com"
+          >Roberto Espeso</a
+        >
+        - 2023
+      </p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.0/dist/confetti.browser.min.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>
