@@ -602,7 +602,7 @@ footer {
 
   .record-results {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
     flex-wrap: nowrap;
     text-transform: capitalize;
     height: 100%;
@@ -617,7 +617,7 @@ footer {
     align-content: center;
     justify-content: space-evenly;
     align-items: center;
-    width: 28rem;
+    width: 23rem;
     height: 7rem;
   }
 

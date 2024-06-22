@@ -6,12 +6,12 @@ var images = new Array(
   ["src/paper-battle.png"],
   ["src/scissors-battle.png"]
 );
-//Tabla de verdad con los valores del CPU (fila) y del USuario(columna) siendo asi matris[cpu].[usuario] y esto devuelve un resultado, por ejemplo matris.[1].[1] devuelve empata porque seria matris.[piedra].[piedra] y estos al ser iguales, sería un empate.
+//Tabla de verdad con los valores del CPU (fila) y del USuario(columna) siendo asi matris[cpu].[usuario] y esto devuelve un resultado, por ejemplo matris.[1].[1] devuelve empata porque seria matris.[piedra].[piedra] y estos al ser iguales, sería un empate. 3 y 1
 var tablePPT = [
   ["", "Rock", "Paper", "Siccsor"],
   ["Rock", "tie", "winner", "loser"],
-  ["Paper", "winner", "tie", "loser"],
-  ["Siccsor", "loser", "winner", "tie"],
+  ["Paper", "loser", "tie", "winner"],
+  ["Siccsor", "winner", "loser", "tie"],
 ];
 
 let index = 0;
@@ -107,11 +107,16 @@ function ppt() {
     image.src = images[cpuValue];
     resultTablePPT = tablePPT[cpuValue][userValue];
     battle(resultTablePPT);
+    console.log("Lo que eligio el usuario es: " + userValue);
+    console.log("Lo que eligio el CPU es: " + cpuValue);
+    console.log(resultTablePPT);
+
 
     enableBtns();
     removeBtnSelected();
   }
 }
+
 
 function battle(resultTablePPT) {
   switch (resultTablePPT) {
